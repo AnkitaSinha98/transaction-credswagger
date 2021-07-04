@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.vit.isf.jcomponent.blockchain.controller;
+package com.vit.isf.jcomponent.transaction.controller;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vit.isf.jcomponent.blockchain.model.Audit;
-import com.vit.isf.jcomponent.blockchain.model.Finance;
-import com.vit.isf.jcomponent.blockchain.service.BlockchainService;
+import com.vit.isf.jcomponent.transaction.model.Audit;
+import com.vit.isf.jcomponent.transaction.model.Finance;
+import com.vit.isf.jcomponent.transaction.service.TransactionService;
 
 /**
  * @author soumadeepdhar
@@ -21,23 +21,23 @@ import com.vit.isf.jcomponent.blockchain.service.BlockchainService;
  */
 
 @RestController
-public class BlockchainController {
+public class TransactionController {
 	
 	@Autowired
-	BlockchainService blockchainservice;
+	TransactionService transactionService;
 	
 	@PostMapping("/Blockchain/accessBlockchain")
-	public Audit BlockchainAccess(@RequestParam("id") Integer id) {
-		return blockchainservice.createAudit(id);
+	public Audit BlockchainAccess(@RequestParam("id") Integer id, @RequestParam("name") String name) {
+		return transactionService.createTransaction(id,name);
 	}
 
 	@GetMapping("/Blockchain/getBlockchain")
 	public List<Audit> getBlockchain(@RequestParam("name") String name) {
-		return 	blockchainservice.getBlockchain(name);
+		return 	transactionService.getTransaction(name);
 	}
 	
 	@GetMapping("/Blockchain/getFinance")
 	public List<Finance> getFinance() {
-		return 	blockchainservice.getFinanceData();
+		return 	transactionService.getFinanceData();
 	}
 }

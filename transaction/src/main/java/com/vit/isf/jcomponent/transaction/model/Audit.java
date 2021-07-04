@@ -1,4 +1,4 @@
-package com.vit.isf.jcomponent.blockchain.model;
+package com.vit.isf.jcomponent.transaction.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

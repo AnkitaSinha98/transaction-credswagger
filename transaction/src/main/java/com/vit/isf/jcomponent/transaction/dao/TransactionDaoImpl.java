@@ -1,4 +1,4 @@
-package com.vit.isf.jcomponent.blockchain.dao;
+package com.vit.isf.jcomponent.transaction.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.vit.isf.jcomponent.blockchain.model.Audit;
-import com.vit.isf.jcomponent.blockchain.model.Finance;
+import com.vit.isf.jcomponent.transaction.model.Audit;
+import com.vit.isf.jcomponent.transaction.model.Finance;
 
 @Repository
-public class BlockchainDaoImpl implements BlockchainDao {
+public class TransactionDaoImpl implements TransactionDao {
 
 	@Autowired
 	private AuditRepository audirepository;
@@ -19,12 +19,12 @@ public class BlockchainDaoImpl implements BlockchainDao {
 	private FinanceRepository financeRepository;
 
 	@Override
-	public void addBlockchain(Audit audit) {
+	public void addTransaction(Audit audit) {
 		audirepository.insert(audit);
 	}
 
 	@Override
-	public List<Audit> getBlockchain(String name) {
+	public List<Audit> getTransaction(String name) {
 		return audirepository.findAll();
 	}
 
