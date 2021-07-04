@@ -1,5 +1,7 @@
 package com.vit.isf.jcomponent.transaction.model;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +11,20 @@ public class Audit {
 	String aId;
 	String auditName;
 	String auditData;
+	String createTime;
+	
+	/**
+	 * @return the createTime
+	 */
+	public String getCreateTime() {
+		return createTime;
+	}
+	/**
+	 * @param string the createTime to set
+	 */
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
 	/**
 	 * @return the auditName
 	 */
@@ -53,7 +69,8 @@ public class Audit {
 	}
 	@Override
 	public String toString() {
-		return "Audit [auditName=" + auditName + ", aId=" + aId + ", auditData=" + auditData + "]";
+		return "Audit [aId=" + aId + ", auditName=" + auditName + ", auditData=" + auditData + ", createTime="
+				+ createTime + "]";
 	}
 	
 	

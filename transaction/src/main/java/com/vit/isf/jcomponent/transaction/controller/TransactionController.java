@@ -4,6 +4,7 @@
 package com.vit.isf.jcomponent.transaction.controller;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class TransactionController {
 	TransactionService transactionService;
 	
 	@PostMapping("/Blockchain/accessBlockchain")
-	public Audit BlockchainAccess(@RequestParam("id") Integer id, @RequestParam("name") String name) {
+	public Audit BlockchainAccess(@RequestParam("id") Integer id, @RequestParam("name") String name) throws InterruptedException, ExecutionException {
 		return transactionService.createTransaction(id,name);
 	}
 
