@@ -6,7 +6,6 @@ import java.util.concurrent.ExecutionException;
 import org.springframework.stereotype.Service;
 
 import com.vit.isf.jcomponent.transaction.model.Audit;
-import com.vit.isf.jcomponent.transaction.model.Finance;
 
 @Service
 public interface TransactionService{
@@ -14,6 +13,7 @@ public interface TransactionService{
 	public Audit createTransaction(int id, String name) throws InterruptedException, ExecutionException;
 
 	public List<Audit> getTransaction(String name);
+
+	public Audit getTransactionAid(String aid) throws InterruptedException, ExecutionException;
 	
-	public List<Finance> getFinanceData();
 }

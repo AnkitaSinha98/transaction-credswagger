@@ -20,7 +20,6 @@ import com.google.firebase.cloud.FirestoreClient;
 import com.vit.isf.jcomponent.transaction.dao.TransactionDao;
 import com.vit.isf.jcomponent.transaction.model.Audit;
 import com.vit.isf.jcomponent.transaction.model.Auditfb;
-import com.vit.isf.jcomponent.transaction.model.Finance;
 
 /**
  * @author soumadeepdhar
@@ -84,9 +83,9 @@ public class TransactionServiceImpl implements TransactionService {
 	 * @throws InterruptedException
 	 * @throws ExecutionException
 	 */
-	public Audit getDetails(String name) throws InterruptedException, ExecutionException {
+	public Audit getTransactionAid(String aid) throws InterruptedException, ExecutionException {
 		Firestore dbFirestore = FirestoreClient.getFirestore();
-		DocumentReference documentReference = dbFirestore.collection(COL_NAME).document(name);
+		DocumentReference documentReference = dbFirestore.collection(COL_NAME).document(aid);
 		ApiFuture<DocumentSnapshot> future = documentReference.get();
 
 		DocumentSnapshot document = future.get();
@@ -106,10 +105,10 @@ public class TransactionServiceImpl implements TransactionService {
 	 * @param name
 	 * @return
 	 */
-	public String deletePatient(String name) {
+	public String deleteTransaction(String name) {
 		Firestore dbFirestore = FirestoreClient.getFirestore();
 		ApiFuture<WriteResult> writeResult = dbFirestore.collection(COL_NAME).document(name).delete();
-		return "Document with Patient ID " + name + " has been deleted";
+		return "Document with Transaction ID " + name + " has been deleted";
 	}
 
 	private String generateKey() {
@@ -161,9 +160,7 @@ public class TransactionServiceImpl implements TransactionService {
 
 	}
 
-	@Override
-	public List<Finance> getFinanceData() {
-		return transactiondao.getFinanceData();
-	}
 
+
+	
 }

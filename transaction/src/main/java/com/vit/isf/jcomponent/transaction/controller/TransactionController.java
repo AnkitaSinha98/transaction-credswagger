@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vit.isf.jcomponent.transaction.model.Audit;
-import com.vit.isf.jcomponent.transaction.model.Finance;
 import com.vit.isf.jcomponent.transaction.service.TransactionService;
 
 import io.swagger.annotations.Api;
@@ -53,13 +52,14 @@ public class TransactionController {
 		return transactionService.getTransaction(name);
 	}
 
-	@ApiOperation(value = "View all transactions", response = Iterable.class)
+	@ApiOperation(value = "View transactions by Aid and decrypt using the algorithm", response = Iterable.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
 			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
-	@GetMapping("/getFinance")
-	public List<Finance> getFinance() {
-		return transactionService.getFinanceData();
+	@GetMapping("/getTransactionAid")
+	public Audit getBlockchainAid(@RequestParam("aId") String aid) throws InterruptedException, ExecutionException {
+		return transactionService.getTransactionAid(aid);
 	}
+	
 }

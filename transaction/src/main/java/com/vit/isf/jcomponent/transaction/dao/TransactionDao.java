@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.vit.isf.jcomponent.transaction.model.Audit;
-import com.vit.isf.jcomponent.transaction.model.Finance;
 
 @Repository
 public interface TransactionDao {
@@ -14,5 +13,4 @@ public interface TransactionDao {
 	
 	public List<Audit> getTransaction(String name);
 	
-	public List<Finance> getFinanceData();
 }

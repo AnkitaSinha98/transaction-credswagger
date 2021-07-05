@@ -1,13 +1,11 @@
 package com.vit.isf.jcomponent.transaction.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.vit.isf.jcomponent.transaction.model.Audit;
-import com.vit.isf.jcomponent.transaction.model.Finance;
 
 @Repository
 public class TransactionDaoImpl implements TransactionDao {
@@ -28,16 +26,7 @@ public class TransactionDaoImpl implements TransactionDao {
 		return audirepository.findAll();
 	}
 
-	@Override
-	public List<Finance> getFinanceData() {
-		Finance finance = new Finance();
-		finance.setExchange("Result Found");
-		List<Finance> finances = new ArrayList<Finance>();
-	finances.add(finance);
-		List<Finance>  financeList = financeRepository.findAll();
-		System.out.println(financeList);
-		return finances;
-	}
+	
 	
 	
 }
