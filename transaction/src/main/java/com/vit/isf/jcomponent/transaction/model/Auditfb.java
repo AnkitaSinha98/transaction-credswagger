@@ -3,12 +3,17 @@ package com.vit.isf.jcomponent.transaction.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Document(collection = "Audit")
 
 public class Auditfb {
 	@Id
+	@ApiModelProperty(notes = "The ID is genearated using encryption")
 	String aId;
+	@ApiModelProperty(notes = "The application-specific transaction name")
 	String auditName;
+	@ApiModelProperty(notes = "The application-specific transaction data")
 	String auditData;
 
 	/**

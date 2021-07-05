@@ -55,7 +55,7 @@ public class TransactionServiceImpl implements TransactionService {
 		Audit auditfbdata = new Audit();
 		auditfbdata.setaId(auditfb.getaId());
 		auditfbdata.setCreateTime(audit.getCreateTime());
-		transactiondao.addTransaction(audit);
+		transactiondao.addTransaction(audit); // Mongo Local PC
 		audit.setaId(auditfb.getaId());
 		audit.setCreateTime(audit.getCreateTime());
 		saveDetails(auditfbdata, audit);
